@@ -39,4 +39,11 @@ public class FlightRepository {
         return flights.stream().filter(f -> f.getDate().equals(date)).collect(Collectors.toList());
     }
 
+    public void addFlight(FlightDTO flight) {
+        if (flights.stream().anyMatch(f -> f.getId().equals(flight.getId()))) {
+            throw new RuntimeException("Flight with ID " + flight.getId() + " already exists.");
+        }
+        flights.add(flight);
+    }
+
 }

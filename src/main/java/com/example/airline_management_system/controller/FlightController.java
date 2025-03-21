@@ -34,6 +34,12 @@ public class FlightController {
         return flightService.getFlightsByDate(dates);
     }
 
+    @PostMapping
+    public String addFlight(@RequestBody FlightDTO flight) {
+        flightService.addFlight(flight);
+        return "Flight added successfully";
+    }
+
     // Exception Handling
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleException(RuntimeException ex) {

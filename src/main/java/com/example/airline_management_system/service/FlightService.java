@@ -36,4 +36,8 @@ public class FlightService {
         }
         return flights;
     }
+
+    public void addFlight(FlightDTO flight) {
+        flightRepository.addFlight(flight);
+    }
 }
