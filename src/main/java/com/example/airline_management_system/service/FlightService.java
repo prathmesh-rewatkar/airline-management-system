@@ -11,10 +11,20 @@ public class FlightService {
     private final FlightRepository flightRepository;
 
     public FlightService(FlightRepository flightRepository) {
+
         this.flightRepository = flightRepository;
     }
 
     public List<FlightDTO> getAllFlights(String sort) {
+
         return flightRepository.getAllFlights(sort);
+    }
+
+    public FlightDTO getFlightById(String id) {
+        FlightDTO flight = flightRepository.getFlightById(id);
+        if (flight == null) {
+            throw new RuntimeException("Flight with ID " + id + " not found.");
+        }
+        return flight;
     }
 }

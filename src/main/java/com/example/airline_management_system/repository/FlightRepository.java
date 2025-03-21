@@ -25,10 +25,14 @@ public class FlightRepository {
     }
 
     public List<FlightDTO> getAllFlights(String sort) {
-
         return sort.equalsIgnoreCase("asc") ? flights.stream()
                 .sorted((a, b) -> a.getId().compareTo(b.getId()))
                 .collect(Collectors.toList()) :
                 flights.stream().sorted((a, b) -> b.getId().compareTo(a.getId())).collect(Collectors.toList());
     }
+
+    public FlightDTO getFlightById(String id) {
+        return flights.stream().filter(f -> f.getId().equals(id)).findFirst().orElse(null);
+    }
+
 }
