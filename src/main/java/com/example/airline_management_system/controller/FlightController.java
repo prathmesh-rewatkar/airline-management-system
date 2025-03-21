@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -26,6 +27,11 @@ public class FlightController {
     @GetMapping("/{id}")
     public FlightDTO getFlightById(@PathVariable String id) {
         return flightService.getFlightById(id);
+    }
+
+    @GetMapping("/{id}/schedules")
+    public List<FlightDTO> getFlightSchedules(@RequestParam LocalDate dates) {
+        return flightService.getFlightsByDate(dates);
     }
 
     // Exception Handling

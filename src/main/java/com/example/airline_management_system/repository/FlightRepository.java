@@ -35,4 +35,8 @@ public class FlightRepository {
         return flights.stream().filter(f -> f.getId().equals(id)).findFirst().orElse(null);
     }
 
+    public List<FlightDTO> getFlightsByDate(LocalDate date) {
+        return flights.stream().filter(f -> f.getDate().equals(date)).collect(Collectors.toList());
+    }
+
 }
