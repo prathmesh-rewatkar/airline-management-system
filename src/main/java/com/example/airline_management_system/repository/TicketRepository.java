@@ -22,4 +22,8 @@ public class TicketRepository {
         return tickets.stream().anyMatch(ticket -> ticket.getId().equals(id));
     }
 
+    public TicketDTO getTicketById(String id) {
+        return tickets.stream().filter(ticket -> ticket.getId().equals(id)).findFirst().orElse(null);
+    }
+
 }

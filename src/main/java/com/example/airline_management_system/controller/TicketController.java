@@ -33,4 +33,13 @@ public class TicketController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getTicketById(@PathVariable String id) {
+        try {
+            return ResponseEntity.ok(ticketService.getTicketById(id));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
 }

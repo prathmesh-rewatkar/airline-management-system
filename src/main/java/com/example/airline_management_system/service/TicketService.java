@@ -53,4 +53,12 @@ public class TicketService {
             throw new RuntimeException("Seat number cannot be empty.");
         }
     }
+
+    public TicketDTO getTicketById(String id) {
+        TicketDTO ticket = ticketRepository.getTicketById(id);
+        if (ticket == null) {
+            throw new RuntimeException("Ticket with ID " + id + " not found.");
+        }
+        return ticket;
+    }
 }
