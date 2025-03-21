@@ -22,4 +22,15 @@ public class TicketController {
     public List<TicketDTO> getAllTickets() {
         return ticketService.getAllTickets();
     }
+
+    @PostMapping
+    public ResponseEntity<String> createTicket(@RequestBody TicketDTO ticket) {
+        try {
+            ticketService.createTicket(ticket);
+            return ResponseEntity.ok("Ticket booked successfully");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

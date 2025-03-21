@@ -13,4 +13,13 @@ public class TicketRepository {
     public List<TicketDTO> getAllTickets() {
         return new ArrayList<>(tickets);
     }
+
+    public void addTicket(TicketDTO ticket) {
+        tickets.add(ticket);
+    }
+
+    public boolean ticketExists(String id) {
+        return tickets.stream().anyMatch(ticket -> ticket.getId().equals(id));
+    }
+
 }
