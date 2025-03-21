@@ -42,4 +42,13 @@ public class TicketController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTicket(@PathVariable String id) {
+        try {
+            ticketService.deleteTicket(id);
+            return ResponseEntity.ok("Ticket deleted successfully");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }

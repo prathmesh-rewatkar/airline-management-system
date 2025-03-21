@@ -26,4 +26,7 @@ public class TicketRepository {
         return tickets.stream().filter(ticket -> ticket.getId().equals(id)).findFirst().orElse(null);
     }
 
+    public void deleteTicket(String id) {
+        tickets.removeIf(ticket -> ticket.getId().equals(id));
+    }
 }

@@ -61,4 +61,11 @@ public class TicketService {
         }
         return ticket;
     }
+
+    public void deleteTicket(String id) {
+        if (!ticketRepository.ticketExists(id)) {
+            throw new RuntimeException("Cannot delete. Ticket with ID " + id + " does not exist.");
+        }
+        ticketRepository.deleteTicket(id);
+    }
 }
